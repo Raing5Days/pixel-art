@@ -132,3 +132,39 @@ The AI agent automatically handles cache cleanup — no manual action needed.
 ```
 
 **Import path from cache/:** `require("../pixel_engine")` or `require("../lib")`
+
+## Managing Templates
+
+Templates live in `base_shapes/` as PNG files. The skill loads them at render time — no lock-in.
+
+**Adding a new template:** Use classic mode to generate a silhouette:
+
+```javascript
+const { PixelEngine } = require("./lib");
+
+// Classic mode with black fill → produces silhouette
+new PixelEngine({
+  size: 64, scale: 8,
+  palette: { c: "#000000" },
+  symmetry: "diagonal",
+  body: [
+    { range: [0, 6],   width: 2, fill: "c" },
+    { range: [7, 30],  width: 3, fill: "c" },
+    // ... define geometry with width
+  ],
+}).render().savePNG("base_shapes/new_weapon.png");
+```
+
+Then reference it in any generation script:
+
+```javascript
+template: "base_shapes/new_weapon.png",
+body: [
+  { range: [0, 6],   fill: { type: "gradient", colors: ["#dark", "#light"] } },
+  // ... colors only, no width
+],
+```
+
+**Updating an existing template:** Regenerate the PNG with the same filename — all scripts referencing it will use the new shape next time they run.
+
+**Importing external pixel art as template:** Any PNG with transparent background works. The engine auto-detects scale (supports 32/64/128 at 1×–16×). Place it in `base_shapes/` and reference by filename.
