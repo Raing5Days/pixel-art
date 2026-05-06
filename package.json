@@ -1,0 +1,21 @@
+{
+  "name": "pixel-art-engine",
+  "version": "1.0.0",
+  "description": "Declarative pixel art generation engine. Describe weapons/items in natural language, produce PNG pixel art.",
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "base_shapes/",
+    "SKILL.md",
+    "AGENTS.md"
+  ],
+  "scripts": {
+    "test": "node -e \"const { PixelEngine } = require('./lib'); console.log('PixelEngine:', typeof PixelEngine);\""
+  },
+  "keywords": [
+    "pixel-art",
+    "generator",
+    "pixel-engine"
+  ],
+  "license": "MIT"
+}
