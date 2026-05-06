@@ -4,3 +4,7 @@
 
 # Dependencies
 node_modules/
+
+# Generated script cache (auto-cleaned after 7 days)
+cache/
+!cache/.gitkeep

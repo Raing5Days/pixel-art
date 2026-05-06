@@ -113,3 +113,22 @@ new PixelEngine({
 5. Classic mode: body defines width + fill
 6. Add asymmetric decorations
 7. Output PNG
+
+## Cache Workflow
+
+All generated artifact scripts go to `cache/`, not project root.
+
+**Naming convention:** `cache/gen_YYYYMMDD_description.js`
+
+**Cleanup rule:** Before writing a new cache entry, delete entries older than 7 days.
+The AI agent automatically handles cache cleanup — no manual action needed.
+
+**Example:**
+```javascript
+// Write script → runs → produces PNG
+// Script saved to: cache/gen_20260506_vortex_staff.js
+// Output saved to: root (vortex_staff.png)
+// Old cache entries (>7d) auto-deleted before write
+```
+
+**Import path from cache/:** `require("../pixel_engine")` or `require("../lib")`
