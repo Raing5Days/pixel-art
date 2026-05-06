@@ -1,0 +1,6 @@
+# Local config
+.tokeny/
+.tokeny.json
+
+# Dependencies
+node_modules/
