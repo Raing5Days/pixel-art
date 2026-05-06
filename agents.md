@@ -302,6 +302,8 @@ pixel-art/
 │   ├── .gitkeep
 │   ├── gen_20260506_vortex_staff.js
 │   └── ...
+├── tools/                  # 辅助工具
+│   └── add_template.js     # 外部图片 → PNG 模板转换工具
 ├── generate_*.js            # 模板生成工具（保留在根目录）
 └── *.png                    # 生成的作品输出
 ```

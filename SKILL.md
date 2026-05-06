@@ -167,4 +167,23 @@ body: [
 
 **Updating an existing template:** Regenerate the PNG with the same filename — all scripts referencing it will use the new shape next time they run.
 
-**Importing external pixel art as template:** Any PNG with transparent background works. The engine auto-detects scale (supports 32/64/128 at 1×–16×). Place it in `base_shapes/` and reference by filename.
+**Adding custom images (PNG / WebP / JPEG) as templates:** Use the conversion tool:
+
+```bash
+# Convert any image to a proper PNG template
+node tools/add_template.js path/to/your_image.webp my_template_name
+
+# Then use in config:
+template: "base_shapes/my_template_name.png"
+```
+
+The tool:
+- Reads PNG (native), WebP/JPEG/etc (via Python PIL if available)
+- Auto-detects pixel-art scale (supports 32/64/128 at 1×–16×)
+- Saves as proper PNG in `base_shapes/`
+- Preserves transparency (transparent → transparent, opaque → opaque)
+
+**Requirements for external images:**
+- Transparent background (or white background that will be treated as shape)
+- Each "pixel" should be a solid block of identical color pixels
+- Any size works — the engine detects the scale automatically
